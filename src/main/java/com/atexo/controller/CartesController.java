@@ -1,14 +1,15 @@
 package com.atexo.controller;
 
 import java.util.List;
+import java.util.Set;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.atexo.model.COULEUR;
 import com.atexo.model.Carte;
+import com.atexo.model.VALEURS;
 import com.atexo.utils.CartesUtils;
 
 @RestController
@@ -25,7 +26,7 @@ public class CartesController {
 	}
 	
 	@GetMapping(value="/valeursAleatoires")
-	public List<Carte> valeursAleatoires(){
+	public List<VALEURS> valeursAleatoires(){
 		return CartesUtils.valeursAleatoire();
 	}
 

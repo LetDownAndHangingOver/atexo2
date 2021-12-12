@@ -17,4 +17,16 @@ public class Carte {
 	public VALEURS getValeur() {
 		return valeur;
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if(obj instanceof Carte) {
+			Carte c = (Carte) obj;
+			if(this.couleur == c.couleur && this.valeur == c.valeur)
+				return true;
+		}
+		return false;
+	}
+	
+	
 }

@@ -3,8 +3,9 @@ package com.atexo.utils;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.EnumSet;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 import com.atexo.model.COULEUR;
 import com.atexo.model.Carte;
@@ -15,7 +16,6 @@ public final class CartesUtils {
 	public static List<VALEURS> listeValeurAleatoire;
 
 	public static List<COULEUR> listeCouleurAleatoire;
-
 
 	public static List<COULEUR> couleurAleatoire() {
 		List<COULEUR> listeCouleur = Arrays.asList(COULEUR.values());
@@ -32,16 +32,16 @@ public final class CartesUtils {
 	}
 
 	public static List<Carte> dixCartesAleatoire() {
-		List<String> listeValeur = listeValeurAleatoire;
-		List<Carte> listeCarte = new ArrayList<Carte>();
-		
-		for (String string : listeValeur) {
-			listeCarte.add(new Carte(couleur, string))
+		List<Carte> listeDixCartes = new ArrayList<Carte>();
+		Carte c = null;
+		while (listeDixCartes.size() < 10) {
+			c = new Carte(COULEUR.values()[(int) (3 * Math.random())], VALEURS.values()[(int) (12 * Math.random())]);
+			if (listeDixCartes.contains(c)) {
+			} else {
+				listeDixCartes.add(c);
+			}
 		}
-		
-		return listeValeur;
+		return listeDixCartes;
 	}
-
-	public
 
 }
