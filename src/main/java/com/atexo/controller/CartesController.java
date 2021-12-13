@@ -1,6 +1,8 @@
 package com.atexo.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.springframework.http.MediaType;
@@ -15,14 +17,19 @@ import com.atexo.utils.CartesUtils;
 @RestController
 public class CartesController {
 	
-	@GetMapping(value="/couleurAleatoire", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value="/couleursAleatoires", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<COULEUR> couleurAleatoire(){
 		return CartesUtils.couleurAleatoire();
 	}
 	
 	@GetMapping(value="/dixCartesAleatoires")
-	public List<Carte> dixCartesAleatoires(){
-		return CartesUtils.dixCartesAleatoire();
+	public Map<String,List<Carte>> dixCartesAleatoires(){
+		Map<String, List<Carte>> mapCartes = new HashMap<String, List<Carte>>();
+		List<Carte> listeNonTriee = CartesUtils.dixCartesAleatoire();
+		mapCartes.put("unsorted", listeNonTriee);
+		List<Carte> listeTriee = CartesUtils.triDeCartes(listeNonTriee);
+		mapCartes.put("sorted", listeTriee);
+		return mapCartes;
 	}
 	
 	@GetMapping(value="/valeursAleatoires")

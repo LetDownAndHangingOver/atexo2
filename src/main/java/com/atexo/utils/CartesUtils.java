@@ -3,9 +3,9 @@ package com.atexo.utils;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.stream.Collectors;
 
 import com.atexo.model.COULEUR;
 import com.atexo.model.Carte;
@@ -27,6 +27,7 @@ public final class CartesUtils {
 	public static List<VALEURS> valeursAleatoire() {
 		List<VALEURS> listeValeurs = Arrays.asList(VALEURS.values());
 		Collections.shuffle(listeValeurs);
+		System.out.println(listeValeurs);
 		listeValeurAleatoire = listeValeurs;
 		return listeValeurs;
 	}
@@ -42,6 +43,35 @@ public final class CartesUtils {
 			}
 		}
 		return listeDixCartes;
+	}
+
+	public static List<Carte> triDeCartes(List<Carte> listeNonTriee) {
+		
+		if (listeCouleurAleatoire == null || listeValeurAleatoire == null) {
+			throw new IllegalArgumentException("Il faut choisir l'ordre de couleurs et de valeurs");
+		}
+
+		List<Carte> listeTriee = listeNonTriee.stream().sorted(new Comparator<Carte>() {
+			@Override
+			public int compare(Carte carte1, Carte carte2) {
+				COULEUR couleur1 = carte1.getCouleur();
+				COULEUR couleur2 = carte2.getCouleur();
+				
+				if(listeCouleurAleatoire.indexOf(couleur1) < listeCouleurAleatoire.indexOf(couleur2)) {
+					return -1;
+				} else if(listeCouleurAleatoire.indexOf(couleur1) > listeCouleurAleatoire.indexOf(couleur2)) {
+					return 1;
+				}
+				VALEURS valeur1 = carte1.getValeur();
+				VALEURS valeur2 = carte2.getValeur();
+				if(listeValeurAleatoire.indexOf(valeur1) < listeValeurAleatoire.indexOf(valeur2)) {
+					return -1;
+				}
+				return 1;
+			}	
+		}).collect(Collectors.toList());
+		
+		return listeTriee;
 	}
 
 }

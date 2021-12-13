@@ -27,6 +27,12 @@ public class Carte {
 		}
 		return false;
 	}
+
+	@Override
+	public String toString() {
+		
+		return super.toString();
+	}
 	
 	
 }
