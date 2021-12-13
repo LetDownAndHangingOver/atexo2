@@ -1,6 +1,6 @@
 package com.atexo.model;
 
-public enum VALEURS {
+public enum Valeurs {
 	UN("As"),
 	DEUX("2"),
 	TROIS("3"),
@@ -17,7 +17,7 @@ public enum VALEURS {
 	
 	private final String valeur;
 
-	private VALEURS(String valeur) {
+	private Valeurs(String valeur) {
 		this.valeur = valeur;
 	}
 

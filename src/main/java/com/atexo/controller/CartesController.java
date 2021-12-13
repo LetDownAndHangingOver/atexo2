@@ -4,41 +4,31 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.atexo.model.COULEUR;
 import com.atexo.model.Carte;
-import com.atexo.model.VALEURS;
-import com.atexo.utils.CartesUtils;
+import com.atexo.model.TenRandomCardsResponse;
+import com.atexo.service.CarteService;
 
 @RestController
+@RequestMapping(value = "/cards")
 public class CartesController {
 	
-	@CrossOrigin(origins = "http://localhost:4200")
-	@GetMapping(value="/couleursAleatoires")
-	public List<COULEUR> couleurAleatoire(){
-		return CartesUtils.couleurAleatoire();
-	}
+	@Autowired
+	private CarteService carteService; 
 	
-	@CrossOrigin(origins = "http://localhost:4200")
-	@GetMapping(value="/dixCartesAleatoires")
-	public Map<String,List<Carte>> dixCartesAleatoires(){
-		Map<String, List<Carte>> mapCartes = new HashMap<String, List<Carte>>();
+	@GetMapping(value="/generate")
+	public TenRandomCardsResponse dixCartesAleatoires(){
+		Map<String, List<Carte>> mapCartes = new HashMap<>();
 		
-		List<Carte> listeNonTriee = CartesUtils.dixCartesAleatoire();
+		List<Carte> listeNonTriee = carteService.dixCartesAleatoire();
 		mapCartes.put("unsorted", listeNonTriee);
-		List<Carte> listeTriee = CartesUtils.triDeCartes(listeNonTriee);
+		List<Carte> listeTriee = carteService.triDeCartes(listeNonTriee);
 		mapCartes.put("sorted", listeTriee);
-		return mapCartes;
+		return  new TenRandomCardsResponse(mapCartes, CarteService.listeCouleurAleatoire, CarteService.listeValeurAleatoire);
+		
 	}
-	
-	@CrossOrigin(origins = "http://localhost:4200")
-	@GetMapping(value="/valeursAleatoires")
-	public List<VALEURS> valeursAleatoires(){
-		return CartesUtils.valeursAleatoire();
-	}
-
 }

@@ -1,6 +1,6 @@
 package com.atexo.model;
 
-public enum COULEUR {
+public enum Couleur {
 	COEUR,
 	CARREAU,
 	PIQUE,

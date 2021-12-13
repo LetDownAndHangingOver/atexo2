@@ -2,19 +2,19 @@ package com.atexo.model;
 
 public class Carte {
 
-	private final COULEUR couleur;
-	private final VALEURS valeur;
+	private final Couleur couleur;
+	private final Valeurs valeur;
 
-	public Carte(COULEUR couleur, VALEURS valeur) {
+	public Carte(Couleur couleur, Valeurs valeur) {
 			this.valeur = valeur;
 			this.couleur = couleur;
 	}
 
-	public COULEUR getCouleur() {
+	public Couleur getCouleur() {
 		return couleur;
 	}
 
-	public VALEURS getValeur() {
+	public Valeurs getValeur() {
 		return valeur;
 	}
 
