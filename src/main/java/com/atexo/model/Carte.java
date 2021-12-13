@@ -22,17 +22,9 @@ public class Carte {
 	public boolean equals(Object obj) {
 		if(obj instanceof Carte) {
 			Carte c = (Carte) obj;
-			if(this.couleur == c.couleur && this.valeur == c.valeur)
+			if(this.couleur.equals(c.couleur) && this.valeur.equals(c.valeur))
 				return true;
 		}
 		return false;
 	}
-
-	@Override
-	public String toString() {
-		
-		return super.toString();
-	}
-	
-	
 }

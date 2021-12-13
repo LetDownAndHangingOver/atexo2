@@ -18,7 +18,7 @@ import com.atexo.utils.CartesUtils;
 public class CartesController {
 	
 	@CrossOrigin(origins = "http://localhost:4200")
-	@GetMapping(value="/couleursAleatoires", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value="/couleursAleatoires")
 	public List<COULEUR> couleurAleatoire(){
 		return CartesUtils.couleurAleatoire();
 	}
@@ -27,6 +27,7 @@ public class CartesController {
 	@GetMapping(value="/dixCartesAleatoires")
 	public Map<String,List<Carte>> dixCartesAleatoires(){
 		Map<String, List<Carte>> mapCartes = new HashMap<String, List<Carte>>();
+		
 		List<Carte> listeNonTriee = CartesUtils.dixCartesAleatoire();
 		mapCartes.put("unsorted", listeNonTriee);
 		List<Carte> listeTriee = CartesUtils.triDeCartes(listeNonTriee);

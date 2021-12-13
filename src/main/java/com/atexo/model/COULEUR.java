@@ -5,5 +5,5 @@ public enum COULEUR {
 	CARREAU,
 	PIQUE,
 	TREFLE;
-	
+
 }

@@ -10,7 +10,7 @@ import com.atexo.controller.errors.domain.ErrorResponse;
 @ControllerAdvice
 public class ExceptionTranslator{
 	
-	@ExceptionHandler(value = IllegalArgumentException.class)
+	@ExceptionHandler(value = RuntimeException.class)
     public ResponseEntity<ErrorResponse> handleIllegalArgumentException(IllegalArgumentException exception) {
 		ErrorResponse response = new ErrorResponse(exception.getMessage());
         

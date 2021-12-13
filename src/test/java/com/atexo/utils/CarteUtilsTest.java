@@ -1,12 +1,12 @@
 package com.atexo.utils;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 import java.util.Comparator;
 import java.util.List;
 
-import org.assertj.core.api.ThrowableAssert.ThrowingCallable;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -55,14 +55,14 @@ public class CarteUtilsTest {
 		for (int i = 0; i < listeCartes.size(); i++) {
 			assertThat(listeCartes.get(i)).isNotNull();
 		}
-	}
+	}	
 	
 	@Test()
 	public void triDeCartesCouleurNullValid() {
 		CartesUtils.listeCouleurAleatoire = null;
 		CartesUtils.valeursAleatoire();
 		List<Carte> listeNonTriee = CartesUtils.dixCartesAleatoire();
-		assertThatIllegalArgumentException().isThrownBy(() ->
+		assertThatExceptionOfType(RuntimeException.class).isThrownBy(() ->
 			CartesUtils.triDeCartes(listeNonTriee)
 			)
 		.withMessage("Il faut choisir l'ordre de couleurs et de valeurs");
@@ -73,7 +73,7 @@ public class CarteUtilsTest {
 		CartesUtils.listeValeurAleatoire = null;
 		CartesUtils.couleurAleatoire();
 		List<Carte> listeNonTriee = CartesUtils.dixCartesAleatoire();
-		assertThatIllegalArgumentException().isThrownBy(() ->
+		assertThatExceptionOfType(RuntimeException.class).isThrownBy(() ->
 			CartesUtils.triDeCartes(listeNonTriee)
 			)
 		.withMessage("Il faut choisir l'ordre de couleurs et de valeurs");
@@ -84,7 +84,7 @@ public class CarteUtilsTest {
 		CartesUtils.listeCouleurAleatoire = null;
 		CartesUtils.listeValeurAleatoire = null;
 		List<Carte> listeNonTriee = CartesUtils.dixCartesAleatoire();
-		assertThatIllegalArgumentException().isThrownBy(() ->
+		assertThatExceptionOfType(RuntimeException.class).isThrownBy(() ->
 			CartesUtils.triDeCartes(listeNonTriee)
 			)
 		.withMessage("Il faut choisir l'ordre de couleurs et de valeurs");

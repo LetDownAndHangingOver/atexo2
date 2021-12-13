@@ -48,8 +48,8 @@ public final class CartesUtils {
 	public static List<Carte> triDeCartes(List<Carte> listeNonTriee) {
 		
 		if (listeCouleurAleatoire == null || listeValeurAleatoire == null) {
-			throw new IllegalArgumentException("Il faut choisir l'ordre de couleurs et de valeurs");
-		}
+			throw new RuntimeException("Il faut choisir l'ordre de couleurs et de valeurs");
+		}	
 
 		List<Carte> listeTriee = listeNonTriee.stream().sorted(new Comparator<Carte>() {
 			@Override

@@ -29,7 +29,4 @@ public enum VALEURS {
 	public String toString() {
 		return this.valeur;
 	}
-	
-	
-
 }
