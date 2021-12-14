@@ -14,11 +14,16 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultMatcher;
 
+import com.atexo.service.CarteService;
+
 @WebMvcTest
 public class CartesControllerTest {
 
 	@Autowired
 	private MockMvc mockMvc;
+	
+	
+	
 	
 	@Test
 	public void couleurAleatoireValid() throws Exception{
@@ -34,6 +39,6 @@ public class CartesControllerTest {
 	public void valeursAleatoireValid() throws Exception{
 		this.mockMvc.perform(get("/valeursAleatoires")).andDo(print())
 		.andExpect(status().isOk());
-//		.andExpect(jsonPath("$*".length(), is(13)));
+//		.andExpect(jsonPath("*".length(), is(13)));
 	}
 }

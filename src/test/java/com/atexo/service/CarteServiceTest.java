@@ -63,37 +63,6 @@ public class CarteServiceTest {
 	}	
 	
 	@Test()
-	public void triDeCartesCouleurNullValid() {
-		List<Carte> listeNonTriee = carteService.dixCartesAleatoire();
-		assertThatExceptionOfType(RuntimeException.class).isThrownBy(() ->
-		carteService.triDeCartes(listeNonTriee)
-			)
-		.withMessage("Il faut choisir l'ordre de couleurs et de valeurs");
-	}
-	
-	@Test()
-	public void triDeCartesValeursNullValid() {
-		List<Carte> listeNonTriee = carteService.dixCartesAleatoire();
-		assertThatExceptionOfType(RuntimeException.class).isThrownBy(() ->
-		carteService.triDeCartes(listeNonTriee)
-			)
-		.withMessage("a");
-	}
-	
-	@Test()
-	public void triDeCartesCouleurEtValeurNullValid() {
-		CarteService.listeCouleurAleatoire = null;
-		CarteService.listeValeurAleatoire = null;
-		List<Carte> listeNonTriee = carteService.dixCartesAleatoire();
-		try {
-			carteService.triDeCartes(listeNonTriee);
-		} catch(IllegalArgumentException e) {
-			fail("should not throw an IllegalArgumentException");
-		}
-		
-	}
-	
-	@Test()
 	public void triDeCartesValid() {
 		List<Carte> listeNonTriee = carteService.dixCartesAleatoire();
 		

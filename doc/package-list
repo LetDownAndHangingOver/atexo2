@@ -1,0 +1,6 @@
+com.atexo
+com.atexo.controller
+com.atexo.controller.errors
+com.atexo.controller.errors.domain
+com.atexo.model
+com.atexo.service
