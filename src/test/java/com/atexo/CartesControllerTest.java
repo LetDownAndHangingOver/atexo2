@@ -36,15 +36,8 @@ public class CartesControllerTest {
 		.andExpect(content().string(containsString("As")))
 		.andExpect(content().string(containsString("Valet")))
 		.andExpect(content().string(containsString("Dame")))
-		.andExpect(content().string(containsString("Roi")))
-		
+		.andExpect(content().string(containsString("Roi")))		
 		;
 	}
 	
-//	@Test
-//	public void valeursAleatoireValid() throws Exception{
-//		this.mockMvc.perform(get("/valeursAleatoires")).andDo(print())
-//		.andExpect(status().isOk());
-////		.andExpect(jsonPath("*".length(), is(13)));
-//	}
 }
